@@ -5,6 +5,6 @@ public class Main {
 
         // Prints the wait time for both restaurants.
         System.out.println("Burger King Wait Time: " + burgerKing.waitTime);
-        System.out.println("Wendy's Wait Time: " + wendys.waitTime);git push -u origin mai
+        System.out.println("Wendy's Wait Time: " + wendys.waitTime);
     }
 }
