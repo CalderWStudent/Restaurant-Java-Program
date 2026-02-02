@@ -4,7 +4,7 @@ public class Main {
         Restaurant wendys = new Restaurant(30, 4.5, 14, 15, "8 am - 10 pm");
 
         // Prints the wait time for both restaurants.
-        System.out.println(burgerKing.waitTime);
-        System.out.println(wendys.waitTime);
+        System.out.println("Burger King Wait Time: " + burgerKing.waitTime);
+        System.out.println("Wendy's Wait Time: " + wendys.waitTime);git push -u origin mai
     }
 }
