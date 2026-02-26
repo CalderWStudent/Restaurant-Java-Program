@@ -1,4 +1,4 @@
-# Restaurant Java Class Ideas
+# Restaurants.Restaurant Java Class Ideas
 
 ### Properties
 - int waitTime
