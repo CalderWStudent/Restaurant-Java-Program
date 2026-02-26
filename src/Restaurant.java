@@ -1,21 +1,11 @@
-package Restaurants;
-
-import MenuItems.MenuItem;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import static java.lang.String.join;
-
 public class Restaurant {
     // Variables
     private String name;
+    private double rating;
     private int waitTime;
-    private double averageRating;
     private double averagePrice;
     private double locationDistance;
     private String locationHours;
-    private ArrayList<MenuItem> menuItems = new ArrayList<>();
 
     // Constructor
     public Restaurant() {
@@ -23,10 +13,10 @@ public class Restaurant {
 
     // Constructor with variables
 
-    public Restaurant(String name, int waitTime, double averageRating, double averagePrice, double locationDistance, String locationHours) {
+    public Restaurant(String name, double rating, int waitTime, double averagePrice, double locationDistance, String locationHours) {
         this.name = name;
+        this.rating = rating;
         this.waitTime = waitTime;
-        this.averageRating = averageRating;
         this.averagePrice = averagePrice;
         this.locationDistance = locationDistance;
         this.locationHours = locationHours;
@@ -37,7 +27,6 @@ public class Restaurant {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -45,23 +34,20 @@ public class Restaurant {
     public int getWaitTime() {
         return waitTime;
     }
-
     public void setWaitTime(int waitTime) {
         this.waitTime = waitTime;
     }
 
     public double getAverageRating() {
-        return averageRating;
+        return rating;
     }
-
     public void setAverageRating(double averageRating) {
-        this.averageRating = averageRating;
+        this.rating = averageRating;
     }
 
     public double getAveragePrice() {
         return averagePrice;
     }
-
     public void setAveragePrice(double averagePrice) {
         this.averagePrice = averagePrice;
     }
@@ -69,7 +55,6 @@ public class Restaurant {
     public double getLocationDistance() {
         return locationDistance;
     }
-
     public void setLocationDistance(double locationDistance) {
         this.locationDistance = locationDistance;
     }
@@ -77,39 +62,18 @@ public class Restaurant {
     public String getLocationHours() {
         return locationHours;
     }
-
     public void setLocationHours(String locationHours) {
         this.locationHours = locationHours;
     }
 
-    public ArrayList<MenuItem> getMenuItems() {
-        return menuItems;
-    }
-
-    public void setMenuItems(ArrayList<MenuItem> menuItems) {
-        this.menuItems = menuItems;
-    }
-
-    public void addToMenuItems(MenuItem menuItem) {
-        this.menuItems.add(menuItem);
-    }
-
-    // Override toString method to display Restaurants.Restaurant variables.
+    // Override toString method to display Restaurant variables.
     public String toString() {
-        ArrayList<String> menuItemsList = new ArrayList<>();
-        for (MenuItem menuItem : menuItems) {
-            menuItemsList.add(menuItem.toString());
-        }
-
         return
             name +
-            "\nWait time: " + waitTime + " minutes" +
-            "\nAverage rating: " + averageRating +
+            "\nYour rating: " + rating +
+            "\nAverage wait time: " + waitTime + " minutes" +
             "\nAverage price: $" + averagePrice +
             "\nDistance: " + locationDistance + " miles" +
-            "\nHours: " + locationHours +
-            "\nMenu Items: " + join("\n", menuItemsList);
-
-
+            "\nHours open: " + locationHours;
     }
 }

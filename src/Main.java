@@ -1,39 +1,37 @@
-import Restaurants.BurgerKing;
-import Restaurants.Restaurant;
-
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class Main {
     static void main(String[] args) {
 
-        // Create an ArrayList of Restaurants
+        // Assign an ArrayList to store Restaurants.
         ArrayList<Restaurant> restaurantList = new ArrayList<>();
 
-        // Open prompts and assign variables based on user input.
-//        String name = JOptionPane.showInputDialog(
-//                "Enter a name for the restaurant:");
-//        int waitTime = Integer.parseInt(JOptionPane.showInputDialog(
-//                "Enter the wait time for " + name + " in minutes: "));
-//        double averageRating = Double.parseDouble(JOptionPane.showInputDialog(
-//                "Enter average rating for " + name + " (ex. 4.3): "));
-//        double averagePrice = Double.parseDouble(JOptionPane.showInputDialog(
-//                "Enter the average price for " + name + ": "));
-//        double locationDistance = Double.parseDouble(JOptionPane.showInputDialog(
-//                "Enter the distance to " + name + " in miles: "));
-//        String locationHours = JOptionPane.showInputDialog(
-//                "Enter the hours for " + name + " (ex. 8:00 am - 10:00 pm): ");
-//
-//        // Create a Restaurants.Restaurant with variables based on user input.
-//        Restaurant inputRestaurant = new Restaurant(name, waitTime, averageRating, averagePrice, locationDistance, locationHours);
+        // Open a series of prompts and assign variables based on user input. Must be the correct data types.
+        JOptionPane.showMessageDialog(
+            null, "Please answer the following questions\nto list your results in the console.");
+        String name = JOptionPane.showInputDialog(
+                "Enter a name for the restaurant you would like to add:");
+        double rating = Double.parseDouble(JOptionPane.showInputDialog(
+            "Enter your rating for " + name + " from 0 to 5 (ex. 4.3): "));
+        int waitTime = Integer.parseInt(JOptionPane.showInputDialog(
+                "Enter the average wait time at " + name + " in whole minutes (ex. 3): "));
+        double averagePrice = Double.parseDouble(JOptionPane.showInputDialog(
+                "Enter the average price you spend at " + name + " (ex. 9.49): "));
+        double locationDistance = Double.parseDouble(JOptionPane.showInputDialog(
+                "Enter the distance to " + name + " in miles (ex. 2.0): "));
+        String locationHours = JOptionPane.showInputDialog(
+                "Enter the hours that " + name + " is open (ex. 8:00 am - 10:00 pm): ");
 
-        // Add the Input Restaurants.Restaurant to the Restaurants.Restaurant List
-//        restaurantList.add(inputRestaurant);
-        restaurantList.add(new BurgerKing("Burger King", 3, 4.5, 7.32, 3, "9:00 am - 10:00 pm"));
+        // Create a new Restaurant with variables based on the user's input.
+        Restaurant inputRestaurant = new Restaurant(name, rating, waitTime, averagePrice, locationDistance, locationHours);
 
-        // Print out the Restaurants.Restaurant's variables.
+        // Add the newly created Restaurant to the Restaurant ArrayList.
+        restaurantList.add(inputRestaurant);
+
+        // Print out the Restaurant's information by calling its toString method.
         for (Restaurant restaurant : restaurantList) {
-            System.out.println(restaurant + "\n");
+            System.out.println("\n" + restaurant);
         }
     }
 }
