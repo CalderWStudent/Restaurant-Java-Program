@@ -1,27 +1,10 @@
 package MenuItems;
 
-import java.util.ArrayList;
+public class DoubleCheeseburgerMeal extends Meal {
 
-public class DoubleCheeseburgerMeal extends Meal implements HasSoda {
+    MenuItem[] items = {new DoubleCheeseburger(), new FrenchFries(), new Soda()};
 
-    ArrayList<MenuItem> items = new ArrayList<>();
+    public DoubleCheeseburgerMeal() {}
 
-    public DoubleCheeseburgerMeal(String size, double price, String sodaType) {
-        super(size, price);
-        AddItem(new DoubleCheeseburger());
-        AddItem(new FrenchFries(size));
-        AddItem(soda);
-    }
-
-    public DoubleCheeseburgerMeal(String size, double price) {
-        super(size, price);
-        AddItem(new DoubleCheeseburger());
-        AddItem(new FrenchFries(size));
-        AddItem(new Soda("", size));
-    }
-
-    @Override
-    public void SetSodaType(String sodaType) {
-        HasSoda.super.SetSodaType(sodaType);
-    }
+    public DoubleCheeseburgerMeal(Size size, double price, String sodaType) {}
 }

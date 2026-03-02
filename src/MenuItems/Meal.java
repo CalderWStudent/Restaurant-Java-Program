@@ -3,14 +3,11 @@ package MenuItems;
 import java.util.ArrayList;
 
 abstract public class Meal extends MenuItem {
-    String size = "";
+    Size size;
     double price;
     ArrayList<MenuItem> items = new ArrayList<>();
 
-    public Meal(String size, double price) {
-        this.size = size;
-        this.price = price;
-    }
+    public Meal() {}
 
     public void AddItem(MenuItem item) {
         items.add(item);

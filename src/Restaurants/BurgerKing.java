@@ -17,11 +17,8 @@ public class BurgerKing extends Restaurant {
         this.setLocationDistance(locationDistance);
         this.setLocationHours(locationHours);
 
-        addToMenuItems(new DoubleCheeseburgerMeal("Medium", 7.99));
-        addToMenuItems(new DoubleCheeseburgerMeal("Large", 8.99));
-        addToMenuItems(new FrenchFries("Medium", 1.49));
-        addToMenuItems(new FrenchFries("Large", 1.99));
-        addToMenuItems(new Soda("Medium", 0.99));
-        addToMenuItems(new Soda("Large", 1.49));
+        addToMenuItems(new DoubleCheeseburgerMeal());
+        addToMenuItems(new FrenchFries());
+        addToMenuItems(new Soda());
     };
 }

@@ -2,23 +2,24 @@ package MenuItems;
 
 public class Soda extends MenuItem {
     String sodaType;
-    String size;
+    Size size;
     double price;
 
-    public Soda(String sodaType, String size, double price) {
+    public Soda() {}
+
+    public Soda(String sodaType, Size size, double price) {
         this.sodaType = sodaType;
         this.size = size;
         this.price = price;
     }
 
-    public Soda(String sodaType, String size) {
+    public Soda(String sodaType, Size size) {
         this.sodaType = sodaType;
         this.size = size;
     }
 
-    public Soda(String size, double price) {
+    public Soda(Size size, double price) {
         this.sodaType = sodaType;
-        this.size = size;
         this.price = price;
     }
 
