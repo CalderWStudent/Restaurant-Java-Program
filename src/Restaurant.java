@@ -68,12 +68,36 @@ public class Restaurant {
 
     // Override toString method to display Restaurant variables.
     public String toString() {
+        String validatedRating;
+        if (rating == -1.0) {
+            validatedRating = " N/A";
+        }
+        else {
+            validatedRating = Double.toString(rating);
+        }
+
+        String minutes;
+        if (waitTime == 1) {
+            minutes = " minute";
+        }
+        else {
+            minutes = " minutes";
+        }
+
+        String miles;
+        if (locationDistance == 1) {
+            miles = " mile";
+        }
+        else {
+            miles = " miles";
+        }
+
         return
             name +
-            "\nYour rating: " + rating +
-            "\nAverage wait time: " + waitTime + " minutes" +
+            "\nRating: " + validatedRating +
+            "\nAverage wait time: " + waitTime + minutes +
             "\nAverage price: $" + averagePrice +
-            "\nDistance: " + locationDistance + " miles" +
+            "\nDistance: " + locationDistance + miles +
             "\nHours open: " + locationHours;
     }
 }

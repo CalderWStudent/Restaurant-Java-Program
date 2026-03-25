@@ -1,37 +1,56 @@
-import javax.swing.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
     static void main(String[] args) {
-
-        // Assign an ArrayList to store Restaurants.
+        // Assign an ArrayList of Restaurants with the information read from a file.
         ArrayList<Restaurant> restaurantList = new ArrayList<>();
 
-        // Open a series of prompts and assign variables based on user input. Must be the correct data types.
-        JOptionPane.showMessageDialog(
-            null, "Please answer the following questions\nto list your results in the console.");
-        String name = JOptionPane.showInputDialog(
-                "Enter a name for the restaurant you would like to add:");
-        double rating = Double.parseDouble(JOptionPane.showInputDialog(
-            "Enter your rating for " + name + " from 0 to 5 (ex. 4.3): "));
-        int waitTime = Integer.parseInt(JOptionPane.showInputDialog(
-                "Enter the average wait time at " + name + " in whole minutes (ex. 3): "));
-        double averagePrice = Double.parseDouble(JOptionPane.showInputDialog(
-                "Enter the average price you spend at " + name + " (ex. 9.49): "));
-        double locationDistance = Double.parseDouble(JOptionPane.showInputDialog(
-                "Enter the distance to " + name + " in miles (ex. 2.0): "));
-        String locationHours = JOptionPane.showInputDialog(
-                "Enter the hours that " + name + " is open (ex. 8:00 am - 10:00 pm): ");
-
-        // Create a new Restaurant with variables based on the user's input.
-        Restaurant inputRestaurant = new Restaurant(name, rating, waitTime, averagePrice, locationDistance, locationHours);
-
-        // Add the newly created Restaurant to the Restaurant ArrayList.
-        restaurantList.add(inputRestaurant);
-
-        // Print out the Restaurant's information by calling its toString method.
-        for (Restaurant restaurant : restaurantList) {
-            System.out.println("\n" + restaurant);
+        try {
+            readRestaurantsFromFile(restaurantList);
         }
+        catch (FileNotFoundException e) {
+            System.out.println(e);
+        }
+
+        // Get the information from a random Restaurant and print it to the console.
+        printRandomRestaurant(restaurantList);
+    }
+
+    // Loop through the "restaurants.txt" file using a Scanner to create Restaurants based on the information found in the file and add them to the restaurantList.
+    private static void readRestaurantsFromFile(ArrayList<Restaurant> restaurantList) throws FileNotFoundException {
+        File file = new File("src/restaurants.txt");
+        Scanner scanner = new Scanner(file);
+        scanner.useDelimiter(",");
+
+        while (scanner.hasNext()) {
+            String name = scanner.next();
+            int waitTime = scanner.nextInt();
+            double rating = scanner.nextDouble();
+            double averagePrice = scanner.nextDouble();
+            double locationDistance = scanner.nextDouble();
+            String locationHours = scanner.next();
+
+            if (rating > 5.0) {
+                rating = -1.0;
+            }
+
+            // Create a new Restaurant with variables based on the file information.
+            Restaurant fileRestaurant = new Restaurant(name, rating, waitTime, averagePrice, locationDistance, locationHours);
+
+            // Add the newly created Restaurant to the Restaurant ArrayList.
+            restaurantList.add(fileRestaurant);
+        }
+    }
+
+    //Prints a random Restaurant from the supplied ArrayList of Restaurants to the console for testing purposes.
+    private static void printRandomRestaurant(ArrayList<Restaurant> restaurantList) {
+        Random random = new Random();
+        int restaurantCount = restaurantList.size();
+        int randomIndex = random.nextInt(restaurantCount);
+        System.out.println(restaurantList.get(randomIndex));
     }
 }
